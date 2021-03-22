@@ -1,0 +1,36 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+void max_line(ifstream &fin)
+{
+   
+    string l;
+    int n = 1, m = 0, i = -1;
+    while (getline(fin, l) && !fin.fail())
+    {
+        if (l.length()> m) 
+        {
+            m = l.length();
+            i = n;
+        }
+        n++;
+    }
+    if (i != -1) 
+    {
+        cout << "Позиция: " << i << endl;
+        cout << "Максимальная длина: " << m << endl;
+    }
+}
+
+int main() 
+{
+    ifstream fin;
+    fin.open("data.txt");
+    setlocale(LC_ALL, "Rus");
+    max_line(fin);
+    
+    fin.close();
+    return 0;
+}
